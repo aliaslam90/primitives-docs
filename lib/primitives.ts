@@ -1,0 +1,153 @@
+export const primitives = {
+  radius: {
+    none: 0,
+    xxs: 2,
+    xs: 4,
+    sm: 6,
+    md: 8,
+    lg: 12,
+    xl: 16,
+    "2xl": 24,
+    "3xl": 32,
+    full: 9999,
+  },
+
+  space: {
+    none: 0,
+    xxs: 2,
+    xs: 4,
+    sm: 30,
+    md: 12,
+    lg: 16,
+    xl: 24,
+    "2xl": 32,
+    "3xl": 40,
+    "4xl": 48,
+    "5xl": 64,
+    "6xl": 80,
+    "7xl": 96,
+    "8xl": 128,
+  },
+
+  stroke: {
+    none: 0,
+    xxs: 0.5,
+    xs: 1,
+    sm: 1.5,
+    md: 2,
+    lg: 3,
+    xl: 4,
+    "2xl": 6,
+    "3xl": 8,
+  },
+
+  // Your Figma has 0..100 (not 0..1)
+  opacity: {
+    0: 0,
+    5: 5,
+    10: 10,
+    20: 20,
+    30: 30,
+    40: 40,
+    50: 50,
+    60: 60,
+    70: 70,
+    80: 80,
+    90: 90,
+    100: 100,
+  },
+
+  fontSize: {
+    6: 6,
+    8: 8,
+    10: 10,
+    12: 12,
+    14: 14,
+    16: 16,
+    18: 18,
+    20: 20,
+    24: 24,
+    28: 28,
+    32: 32,
+    34: 34,
+    36: 36,
+    38: 38,
+    40: 40,
+  },
+
+  fontWeight: {
+    100: 100,
+    200: 200,
+    300: 300,
+    400: 400,
+    500: 500,
+    600: 600,
+    700: 700,
+    800: 800,
+    900: 900,
+  },
+
+  lineHeight: {
+    0: 0,
+    8: 8,
+    10: 10,
+    12: 12,
+    14: 14,
+    16: 16,
+    20: 20,
+    24: 24,
+    28: 28,
+    32: 32,
+    36: 36,
+    40: 40,
+    48: 48,
+    56: 56,
+    64: 64,
+  },
+
+  letterSpacing: {
+    tighter: -0.8,
+    tight: -0.4,
+    normal: 0,
+    wide: 0.4,
+    wider: 0.8,
+    widest: 1.2,
+  },
+
+  shadow: {
+    none: "none",
+    xs: "0px 1px 2px rgba(0,0,0,0.05)",
+    sm: "0px 2px 6px rgba(0,0,0,0.08)",
+    md: "0px 4px 12px rgba(0,0,0,0.12)",
+    lg: "0px 8px 24px rgba(0,0,0,0.16)",
+    xl: "0px 16px 40px rgba(0,0,0,0.20)",
+    "2xl": "0px 24px 64px rgba(0,0,0,0.24)",
+  },
+} as const;
+
+export type Primitives = typeof primitives;
+
+export const primitiveOrder = [
+  "radius",
+  "space",
+  "stroke",
+  "opacity",
+  "fontSize",
+  "fontWeight",
+  "lineHeight",
+  "letterSpacing",
+  "shadow",
+] as const;
+
+export const primitiveLabels: Record<(typeof primitiveOrder)[number], string> = {
+  radius: "Radius",
+  space: "Space",
+  stroke: "Stroke",
+  opacity: "Opacity",
+  fontSize: "Font size",
+  fontWeight: "Font weight",
+  lineHeight: "Line height",
+  letterSpacing: "Letter spacing",
+  shadow: "Shadow",
+};
+
