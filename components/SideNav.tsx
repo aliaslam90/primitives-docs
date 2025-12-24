@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
@@ -23,6 +24,7 @@ const links = [
 
 export function SideNav() {
   const [logoError, setLogoError] = useState(false);
+  const pathname = usePathname();
 
   return (
     <aside
@@ -58,20 +60,42 @@ export function SideNav() {
       <div style={{ fontWeight: 700, marginBottom: 12 }}>Primitives</div>
 
       <nav style={{ display: "grid", gap: 8 }}>
-        {links.map((l) => (
-          <a
-            key={l.href}
-            href={l.href}
-            style={{
-              padding: "8px 10px",
-              borderRadius: 10,
-              border: "1px solid transparent",
-              color: "#111827",
-            }}
-          >
-            {l.label}
-          </a>
-        ))}
+        {links.map((l) => {
+          const isActive = pathname === l.href;
+          return (
+            <Link
+              key={l.href}
+              href={l.href}
+              style={{
+                padding: "8px 10px",
+                borderRadius: 10,
+                border: "1px solid",
+                borderColor: isActive ? "#e5e7eb" : "transparent",
+                background: isActive ? "#f9fafb" : "transparent",
+                color: "#111827",
+                fontWeight: isActive ? 600 : 400,
+                textDecoration: "none",
+                display: "block",
+                transition: "all 0.15s ease",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.background = "#f9fafb";
+                  e.currentTarget.style.borderColor = "#e5e7eb";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "transparent";
+                }
+              }}
+            >
+              {l.label}
+            </Link>
+          );
+        })}
       </nav>
 
       <div style={{ marginTop: 14, fontSize: 12, color: "#6b7280" }}>
