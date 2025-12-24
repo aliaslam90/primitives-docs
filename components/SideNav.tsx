@@ -1,3 +1,8 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+
 const links = [
   { href: "/playground", label: "Playground" },
   { href: "/primitives", label: "Overview" },
@@ -17,6 +22,8 @@ const links = [
 ];
 
 export function SideNav() {
+  const [logoError, setLogoError] = useState(false);
+
   return (
     <aside
       style={{
@@ -29,6 +36,25 @@ export function SideNav() {
         background: "#fff",
       }}
     >
+      <Link href="/" style={{ display: "block", marginBottom: 16, textDecoration: "none" }}>
+        {!logoError ? (
+          <img
+            src="/logo.png"
+            alt="iClosed"
+            style={{
+              height: 32,
+              width: "auto",
+              objectFit: "contain",
+            }}
+            onError={() => setLogoError(true)}
+          />
+        ) : (
+          <div style={{ fontSize: "20px", fontWeight: 700, color: "#111827" }}>iClosed</div>
+        )}
+      </Link>
+      
+      <div style={{ borderBottom: "1px solid #e5e7eb", marginBottom: 16 }} />
+
       <div style={{ fontWeight: 700, marginBottom: 12 }}>Primitives</div>
 
       <nav style={{ display: "grid", gap: 8 }}>
