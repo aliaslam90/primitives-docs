@@ -20,6 +20,8 @@ const links = [
 
   { href: "/primitives/shadow", label: "Shadow" },
   { href: "/primitives/colors", label: "Colors" },
+
+  { href: "/semantic/text", label: "Semantic Text" },
 ];
 
 export function SideNav() {

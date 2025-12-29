@@ -1,4 +1,5 @@
 import { tokens } from "./tokens";
+import { semanticTextTokens } from "./semantic/text";
 
 type CssVarLine = string;
 
@@ -36,6 +37,11 @@ export function buildCssVars(): string {
     Object.entries(scale as Record<string, string>).forEach(([step, hex]) => {
       lines.push(`--color-${family}-${step}: ${hex};`);
     });
+  });
+
+  // semantic text colors
+  semanticTextTokens.forEach((token) => {
+    lines.push(`${token.cssVar}: ${token.value};`);
   });
 
   return `:root{\n  ${lines.join("\n  ")}\n}`;
